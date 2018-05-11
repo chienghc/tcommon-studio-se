@@ -581,6 +581,12 @@ public class XSDPopulationUtil2 implements IXSDPopulationUtil {
                 rootSubsNode = parentNode;
             }
             ATreeNode node = new ATreeNode();
+            // set parent here for getParentList check for loop latter
+            if (supportSubstitution) {
+                node.setParent(parentNode);
+            } else {
+                node.setParent(rootSubsNode.getParent());
+            }
             String prefix = null;
             String namespace = xsdElementDeclaration.getTargetNamespace();
             node.setCurrentNamespace(namespace);
